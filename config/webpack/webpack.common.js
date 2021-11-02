@@ -4,16 +4,12 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const DotenvPlugin = require('dotenv-webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
 const { GenerateSW } = require('workbox-webpack-plugin');
 
 const chalk = require('chalk');
 const paths = require('../paths');
-const createHtmlWebpackConfig = require('./htmlWebpackConfig');
 
 const webpackConfig = env => {
-  const { htmlConfigs } = createHtmlWebpackConfig();
-
   console.log(chalk.yellow('ENV:'));
   console.table(env);
 
@@ -22,7 +18,6 @@ const webpackConfig = env => {
     output: {
       path: paths.distPath,
       filename: '[name].bundle.js',
-      publicPath: paths.publicPath,
       assetModuleFilename: 'assets/[name][ext]'
     },
     module: {
@@ -52,26 +47,18 @@ const webpackConfig = env => {
       new DotenvPlugin(),
       new HtmlWebpackPlugin({
         template: paths.appHtml,
+        filename: 'index.html',
         title: 'React Starter',
-        // og: {
-        //   title: 'React Starter',
-        //   description: 'React Starter',
-        //   image: 'http://localhost:3000/assets/favicons/favicon-48x48.png'
-        // },
+        og: {
+          title: 'React Starter',
+          description: 'React Starter'
+        },
         meta: {
           description: 'React Starter'
         }
       }),
       new CleanWebpackPlugin(),
       new NodePolyfillPlugin(),
-      // new CopyPlugin({
-      //   patterns: [
-      //     {
-      //       from: path.join(paths.assetsPath, `${env.client}/img`),
-      //       to: path.join(paths.publicPath, 'assets')
-      //     }
-      //   ]
-      // }),
       new GenerateSW()
     ],
     resolve: {

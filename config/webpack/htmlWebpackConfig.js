@@ -1,8 +1,6 @@
 const path = require('path');
 const paths = require('../paths');
 
-console.log(path.join(paths.publicPath, 'index.html'));
-
 const createHtmlWebpackConfig = () => ({
   htmlConfigs: {
     template: path.join(paths.publicPath, 'index.html'),

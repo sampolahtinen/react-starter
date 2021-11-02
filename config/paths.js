@@ -7,7 +7,7 @@ const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
 module.exports = {
   srcPath: resolveApp('src'),
   publicPath: resolveApp('public'),
-  appHtml: resolveApp('public/index.html'),
+  appHtml: resolveApp('public/template.html'),
   distPath: resolveApp('dist'),
   entryPath: resolveApp('src/index.tsx'),
   assetsPath: resolveApp('src/assets')
