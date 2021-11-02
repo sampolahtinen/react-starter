@@ -5,9 +5,6 @@
 * Webpack v. 4
 * React v. 16.7.0
 
-### Development:
-* Storybook v. 4.1.3
-
 ### Testing:
 * Jest v. 23.6.0
 * Enzyme v. 3.8.0
