@@ -2,7 +2,6 @@ import React from 'react';
 import { Flex, Box, ThemeProvider, Image } from 'theme-ui';
 import { useSpring, animated } from 'react-spring';
 import logo from '../assets/images/logo.svg';
-import testImage from '../assets/images/test.jpg';
 import { theme } from '../styles/theme';
 
 const App = () => {
@@ -28,7 +27,6 @@ const App = () => {
         >
           <animated.div style={spinAnimation}>
             <Image src={logo} alt="logo" width="500px" />
-            <Image src={testImage} alt="logo" width="500px" />
           </animated.div>
           <Box p={4} sx={{ textAlign: 'center' }}>
             <h1 title="welcome">Welcome to React Starter!</h1>

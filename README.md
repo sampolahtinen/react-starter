@@ -27,8 +27,8 @@ Bells and whistles for easily kick-starting your next React project.
 
 ### Testing
 
-`yarn test:watch` - watch local files
-`yarn test:coverage` - current code coverage
+`yarn test --watch` - watch local files
+`yarn test --coverage` - collect code test coverage
 
 ### Build
 

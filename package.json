@@ -7,10 +7,7 @@
   "scripts": {
     "dev": "webpack serve --env development --config ./config/webpack/webpack.dev.js",
     "build": "webpack --env production --config ./config/webpack/webpack.prod.js",
-    "lint": "eslint ./src --fix",
-    "test": "jest",
-    "test:coverage": "jest --watch --coverage",
-    "test:watch": "jest --watch"
+    "test": "jest"
   },
   "keywords": [],
   "license": "ISC",
