@@ -1,13 +1,39 @@
-import React, { useState } from 'react';
-import Button from '../components/Button';
+import React from 'react';
+import { Flex, Box, ThemeProvider, Image } from 'theme-ui';
+import { useSpring, animated } from 'react-spring';
+import logo from '../assets/images/logo.svg';
+import { theme } from '../styles/theme';
 
 const App = () => {
-  const [color, setColor] = useState('black');
+  const spinAnimation = useSpring({
+    from: { transform: 'rotate(0deg)' },
+    to: { transform: 'rotate(360deg)' },
+    loop: true,
+    config: {
+      duration: 10000
+    }
+  });
 
   return (
     <>
-      <h1 style={{ color }}>12333HELLO222</h1>
-      <Button onClick={() => setColor('red')}>change color</Button>
+      <ThemeProvider theme={theme}>
+        <Flex
+          sx={{
+            height: '100vh',
+            alignItems: 'center',
+            justifyContent: 'center',
+            flexDirection: 'column'
+          }}
+        >
+          <animated.div style={spinAnimation}>
+            <Image src={logo} alt="logo" width="500px" />
+          </animated.div>
+          <Box p={4} sx={{ textAlign: 'center' }}>
+            <h1>Welcome to React Starter!</h1>
+            <h2>Have fun coding!</h2>
+          </Box>
+        </Flex>
+      </ThemeProvider>
     </>
   );
 };
