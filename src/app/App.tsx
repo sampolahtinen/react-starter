@@ -29,7 +29,7 @@ const App = () => {
             <Image src={logo} alt="logo" width="500px" />
           </animated.div>
           <Box p={4} sx={{ textAlign: 'center' }}>
-            <h1>Welcome to React Starter!</h1>
+            <h1 title="welcome">Welcome to React Starter!</h1>
             <h2>Have fun coding!</h2>
           </Box>
         </Flex>
