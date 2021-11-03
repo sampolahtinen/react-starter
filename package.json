@@ -22,6 +22,8 @@
     "@babel/runtime": "^7.16.0",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.1",
     "@theme-ui/presets": "^0.12.0",
+    "@types/enzyme-adapter-react-16": "^1.0.6",
+    "@types/jest": "^27.0.2",
     "@types/ramda": "^0.27.46",
     "@types/react": "^17.0.33",
     "@types/react-dom": "^17.0.10",
@@ -29,12 +31,14 @@
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
     "babel-loader": "^8.2.3",
+    "camelcase": "^6.2.0",
     "chalk": "^4.1.2",
     "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^9.0.1",
     "dotenv-webpack": "^7.0.3",
-    "enzyme": "^3.8.0",
-    "enzyme-adapter-react-16": "^1.7.1",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.6",
+    "esbuild-jest": "^0.5.0",
     "esbuild-loader": "^2.16.0",
     "eslint": "^5.11.1",
     "eslint-config-airbnb": "^17.1.0",
@@ -45,6 +49,7 @@
     "html-loader": "^3.0.0",
     "html-webpack-plugin": "^5.5.0",
     "jest": "^23.6.0",
+    "jest-enzyme": "^7.1.2",
     "node-polyfill-webpack-plugin": "^1.1.4",
     "nodemon-webpack-plugin": "^4.5.2",
     "ramda": "^0.27.1",
@@ -65,10 +70,40 @@
     "workbox-webpack-plugin": "^6.3.0"
   },
   "jest": {
-    "setupTestFrameworkScriptFile": "<rootDir>/.jest/setupTests.js",
-    "testURL": "http://localhost",
+    "roots": [
+      "<rootDir>/src"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!src/**/*.d.ts"
+    ],
+    "setupTestFrameworkScriptFile": "<rootDir>/config/jest/setupTests.ts",
+    "testMatch": [
+      "<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}",
+      "<rootDir>/src/**/*.{spec,test}.{js,jsx,ts,tsx}"
+    ],
+    "testEnvironment": "jsdom",
     "transform": {
-      "^.+\\.(js|jsx|mjs)$": "<rootDir>/node_modules/babel-jest"
-    }
+      "^.+\\.(js|jsx|mjs|cjs|ts|tsx)$": "<rootDir>/node_modules/esbuild-jest/esbuild-jest.js",
+      "^(?!.*\\.(js|jsx|mjs|cjs|ts|tsx|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
+    },
+    "transformIgnorePatterns": [
+      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs|cjs|ts|tsx)$",
+      "^.+\\.module\\.(css|sass|scss)$"
+    ],
+    "modulePaths": [],
+    "moduleFileExtensions": [
+      "web.js",
+      "js",
+      "web.ts",
+      "ts",
+      "web.tsx",
+      "tsx",
+      "json",
+      "web.jsx",
+      "jsx",
+      "node"
+    ],
+    "resetMocks": true
   }
 }
