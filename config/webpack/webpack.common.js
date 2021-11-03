@@ -40,6 +40,10 @@ const webpackConfig = env => {
           issuer: [/\.(ts|tsx|js|jsx|md|mdx)$/],
           type: 'asset/inline',
           use: 'svgo-loader'
+        },
+        {
+          test: /\.(jpg|jpeg|png|webp|avif)$/i,
+          type: 'asset/resource'
         }
       ]
     },
