@@ -4,7 +4,7 @@ Bells and whistles for easily kick-starting your next React project.
 
 ## Core:
 
-- React v18
+- React v17
 - Webpack v5 w/ esbuild
 - Service worker
 - Theme UI
